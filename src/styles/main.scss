@@ -1,0 +1,147 @@
+@use './colors' as colors;
+
+// @import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --bg-color: #{colors.$charcoal};
+  --text-color: #{colors.$light-gray};
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  // outline: 2px solid green;
+}
+
+body {
+  margin: 0;
+  padding: 110px 0 0 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.lexend {
+  font-family: 'Lexend', sans-serif;
+}
+
+.main-content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.lime {
+  background-color: colors.$pastel-lime;
+  color: var(--bg-color);
+
+  &-outline {
+    background-color: var(--bg-color);
+    color: colors.$pastel-lime;
+    border: 2px solid colors.$pastel-lime;
+
+    .category-card-arrow-container {
+      border: 1px solid colors.$pastel-lime !important;
+      svg {
+        color: colors.$pastel-lime !important;
+      }
+    }
+  }
+}
+
+.mint {
+  background-color: colors.$mint;
+  color: var(--bg-color);
+
+  &-outline {
+    background-color: var(--bg-color);
+    color: colors.$mint;
+    border: 2px solid colors.$mint;
+
+    .category-card-arrow-container {
+      border: 1px solid colors.$mint !important;
+      svg {
+        color: colors.$mint !important;
+      }
+    }
+  }
+}
+
+.pink {
+  background-color: colors.$soft-pink;
+  color: var(--bg-color);
+
+  &-outline {
+    background-color: var(--bg-color);
+    color: colors.$soft-pink;
+    border: 2px solid colors.$soft-pink;
+
+    .category-card-arrow-container {
+      border: 1px solid colors.$soft-pink !important;
+      svg {
+        color: colors.$soft-pink !important;
+      }
+    }
+  }
+}
+
+.cream {
+  background-color: colors.$cream;
+  color: var(--bg-color);
+
+  &-outline {
+    background-color: var(--bg-color);
+    color: colors.$cream;
+    border: 2px solid colors.$cream;
+
+    .category-card-arrow-container {
+      border: 1px solid colors.$cream !important;
+      svg {
+        color: colors.$cream !important;
+      }
+    }
+  }
+}
+
+.light-gray {
+  background-color: colors.$light-gray;
+  color: var(--bg-color);
+
+  &-outline {
+    background-color: var(--bg-color);
+    color: colors.$light-gray;
+    border: 2px solid colors.$light-gray;
+
+    .category-card-arrow-container {
+      border: 1px solid colors.$light-gray !important;
+      svg {
+        color: colors.$light-gray !important;
+      }
+    }
+  }
+}
+
+.dark-gray {
+  background-color: colors.$dark-gray;
+
+  .category-card-arrow-container {
+    border-color: var(--text-color);
+    svg {
+      color: var(--text-color);
+    }
+  }
+  .category-card-text {
+    color: var(--text-color);
+  }
+}
+
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+
+button {
+  cursor: pointer;
+}
