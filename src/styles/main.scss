@@ -31,92 +31,42 @@ body {
   margin: 0 auto;
 }
 
-.lime {
-  background-color: colors.$pastel-lime;
+// Define a map for primary color classes
+$primary-colors: (
+  lime: colors.$pastel-lime,
+  mint: colors.$mint,
+  pink: colors.$soft-pink,
+  cream: colors.$cream,
+  light-gray: colors.$light-gray,
+);
+
+// Mixin for the filled color classes (e.g., .lime, .mint)
+@mixin filled-color-class($color) {
+  background-color: $color;
   color: var(--bg-color);
+}
 
-  &-outline {
-    background-color: var(--bg-color);
-    color: colors.$pastel-lime;
-    border: 2px solid colors.$pastel-lime;
+// Mixin for the outline color classes (e.g., .lime-outline, .mint-outline)
+@mixin outline-color-class($color) {
+  background-color: var(--bg-color);
+  color: $color;
+  border: 2px solid $color;
 
-    .category-card-arrow-container {
-      border: 1px solid colors.$pastel-lime !important;
-      svg {
-        color: colors.$pastel-lime !important;
-      }
+  .category-card-arrow-container {
+    border: 1px solid $color !important;
+    svg {
+      color: $color !important;
     }
   }
 }
 
-.mint {
-  background-color: colors.$mint;
-  color: var(--bg-color);
+// Generate color classes using the maps and mixins
+@each $name, $color in $primary-colors {
+  .#{$name} {
+    @include filled-color-class($color);
 
-  &-outline {
-    background-color: var(--bg-color);
-    color: colors.$mint;
-    border: 2px solid colors.$mint;
-
-    .category-card-arrow-container {
-      border: 1px solid colors.$mint !important;
-      svg {
-        color: colors.$mint !important;
-      }
-    }
-  }
-}
-
-.pink {
-  background-color: colors.$soft-pink;
-  color: var(--bg-color);
-
-  &-outline {
-    background-color: var(--bg-color);
-    color: colors.$soft-pink;
-    border: 2px solid colors.$soft-pink;
-
-    .category-card-arrow-container {
-      border: 1px solid colors.$soft-pink !important;
-      svg {
-        color: colors.$soft-pink !important;
-      }
-    }
-  }
-}
-
-.cream {
-  background-color: colors.$cream;
-  color: var(--bg-color);
-
-  &-outline {
-    background-color: var(--bg-color);
-    color: colors.$cream;
-    border: 2px solid colors.$cream;
-
-    .category-card-arrow-container {
-      border: 1px solid colors.$cream !important;
-      svg {
-        color: colors.$cream !important;
-      }
-    }
-  }
-}
-
-.light-gray {
-  background-color: colors.$light-gray;
-  color: var(--bg-color);
-
-  &-outline {
-    background-color: var(--bg-color);
-    color: colors.$light-gray;
-    border: 2px solid colors.$light-gray;
-
-    .category-card-arrow-container {
-      border: 1px solid colors.$light-gray !important;
-      svg {
-        color: colors.$light-gray !important;
-      }
+    &-outline {
+      @include outline-color-class($color);
     }
   }
 }

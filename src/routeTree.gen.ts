@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as BooksCategoriesImport } from './routes/books/categories'
+import { Route as BooksBookIdImport } from './routes/books/$bookId'
 
 // Create/Update Routes
 
@@ -28,6 +29,12 @@ const BooksCategoriesRoute = BooksCategoriesImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const BooksBookIdRoute = BooksBookIdImport.update({
+  id: '/books/$bookId',
+  path: '/books/$bookId',
+  getParentRoute: () => rootRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -37,6 +44,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/books/$bookId': {
+      id: '/books/$bookId'
+      path: '/books/$bookId'
+      fullPath: '/books/$bookId'
+      preLoaderRoute: typeof BooksBookIdImport
       parentRoute: typeof rootRoute
     }
     '/books/categories': {
@@ -53,36 +67,41 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/books/$bookId': typeof BooksBookIdRoute
   '/books/categories': typeof BooksCategoriesRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/books/$bookId': typeof BooksBookIdRoute
   '/books/categories': typeof BooksCategoriesRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/books/$bookId': typeof BooksBookIdRoute
   '/books/categories': typeof BooksCategoriesRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/books/categories'
+  fullPaths: '/' | '/books/$bookId' | '/books/categories'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/books/categories'
-  id: '__root__' | '/' | '/books/categories'
+  to: '/' | '/books/$bookId' | '/books/categories'
+  id: '__root__' | '/' | '/books/$bookId' | '/books/categories'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BooksBookIdRoute: typeof BooksBookIdRoute
   BooksCategoriesRoute: typeof BooksCategoriesRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BooksBookIdRoute: BooksBookIdRoute,
   BooksCategoriesRoute: BooksCategoriesRoute,
 }
 
@@ -97,11 +116,15 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/books/$bookId",
         "/books/categories"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/books/$bookId": {
+      "filePath": "books/$bookId.tsx"
     },
     "/books/categories": {
       "filePath": "books/categories.tsx"

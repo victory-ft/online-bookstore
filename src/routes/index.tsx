@@ -6,8 +6,8 @@ import {
 } from '@phosphor-icons/react'
 
 import { CategoryCard } from '@/components/CategoryCard'
-import { RegularButton } from '@/components/Buttons'
-import { BookCard } from '@/components/BookCard'
+import { Button } from '@/components/Buttons'
+import { BookCard } from '@/components/books/BookCard'
 
 import '../styles/homepage.scss'
 
@@ -46,10 +46,10 @@ function Home() {
 
       <section className="homepage-booklist">
         <div className="category-btns">
-          <RegularButton>All Books</RegularButton>
-          <RegularButton>New</RegularButton>
-          <RegularButton>Best Sellers</RegularButton>
-          <RegularButton>Sale</RegularButton>
+          <Button>All Books</Button>
+          <Button>New</Button>
+          <Button>Best Sellers</Button>
+          <Button>Sale</Button>
         </div>
         <div className="homepage-books">
           <BookCard
@@ -57,36 +57,42 @@ function Home() {
             title="restaurant"
             author="Brian Duff"
             price={35}
+            id="1"
           />
           <BookCard
             image="/images/book2.jpg"
             title="Positive Stories for Negative Times"
             author="Wonder Fools"
             price={15}
+            id="2"
           />
           <BookCard
             image="/images/book3.jpg"
             title="Comics, Culture, and Religion"
             author="Faith Imagined"
             price={24.4}
+            id="3"
           />
           <BookCard
             image="/images/harrypotter1.jpg"
             title="Harry Potter and the Philosopher's Stone"
             author="JK Rowling"
             price={45}
+            id="4"
           />
           <BookCard
             image="/images/harrypotter4.jpg"
             title="Harry Potter and the Goblet of Fire"
             author="JK Rowling"
             price={42.5}
+            id="5"
           />
           <BookCard
             image="/images/harrypotter1.jpg"
             title="Harry Potter and the Philosopher's Stone"
             author="JK Rowling"
             price={45}
+            id="6"
           />
         </div>
       </section>
@@ -159,12 +165,12 @@ function Home() {
           text="New Releases"
         />
 
-        <div className="small-category-card lime-outline">
+        <Link to="/" className="small-category-card lime-outline">
           <p className="category-card-text">Award Winners</p>
           <div className="category-card-arrow-container">
             <ArrowRightIcon />
           </div>
-        </div>
+        </Link>
 
         <CategoryCard color="pink editor" link="/" text="Editor's Picks" />
         <CategoryCard

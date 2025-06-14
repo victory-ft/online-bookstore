@@ -17,13 +17,11 @@ export const CategoryCard = ({
   span,
 }: CategoryCardProps) => {
   return (
-    // <Link to="/">
-    <div className={`category-card ${color} ${span}`}>
+    <Link to={link} className={`category-card ${color} ${span || ''}`}>
       <div className="category-card-arrow-container">
         <ArrowRightIcon />
       </div>
       <p className="category-card-text">{text}</p>
-    </div>
-    // </Link>
+    </Link>
   )
 }
